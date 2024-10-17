@@ -1,0 +1,156 @@
+**EXECRCICE 1**
+
+CREATE DATABASE contrôle_continu ;
+USE contrôle_continu;
+
+CREATE TABLE entreprise
+(
+numE INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+nomE VARCHAR(100),
+adresse VARCHAR(100)
+);
+
+CREATE TABLE offre
+(
+numO INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+numE INT,
+contrat VARCHAR(100),
+qualif VARCHAR(100),
+salaire FLOAT,
+lieu VARCHAR(100)
+);
+
+INSERT INTO entreprise (nomE, adresse)
+VALUES
+('CapGemini', 'Paris (FRANCE)'),
+('IBM', 'Armonk, New York (USA)'),
+('Atos Origin', 'Courbevoie (FRANCE)'),
+('Dell','Round Rock, Texas (USA');
+
+INSERT INTO offre (contrat, qualif, salaire, lieu)
+VALUES
+('CDI', 'Admin Système', 2000, 'Toulouse'),
+('Interim', 'Webmaster', 1500, 'Paris'),
+('CDI', 'AdminBD', 2100, 'Lyon');
+
+SELECT* FROM entreprise;
+SELECT* FROM offre;
+
+UPDATE offre
+SET numE = 1
+WHERE numO = 1;
+
+UPDATE offre
+SET numE = 2
+WHERE numO = 2;
+
+UPDATE offre
+SET numE = 3
+WHERE numO = 3;
+
+SELECT* FROM offre;
+
+**EXERCICE 2**
+
+[données fournies avec le contrôle]
+
+SELECT * FROM country;
+SELECT* FROM city;
+SELECT* FROM province;
+SELECT* FROM economy;
+SELECT* FROM population;
+SELECT* FROM politics; 
+SELECT* FROM language; 
+SELECT* FROM religion;
+SELECT* FROM ethnicGroup;
+SELECT* FROM continent;
+SELECT* FROM borders;
+SELECT* FROM encompasses;
+SELECT* FROM organization;
+SELECT* FROM isMember;
+SELECT* FROM moutain;
+SELECT* FROM desert;
+SELECT* FROM island;
+SELECT* FROM lake;
+SELECT* FROM sea;
+SELECT* FROM river;
+SELECT* FROM geo_mountain;
+SELECT* FROM geo_desert;
+SELECT* FROM geo_island;
+SELECT* FROM geo_river;
+SELECT* FROM geo_sea;
+SELECT* FROM geo_lake;
+SELECT* FROM geo_source;
+SELECT* FROM geo_estuary;
+SELECT* FROM mergesWith;
+SELECT* FROM located;
+SELECT* FROM mountainOnIsland;
+
+**SECTION 1**
+
+SELECT Name FROM lake;
+
+SELECT Name, Area FROM lake;
+
+SELECT Name, Area FROM lake WHERE Altitude < 0;
+
+SELECT Name FROM country WHERE Population > 50000000;
+
+SELECT Name, Capital FROM country WHERE Population < 100000;
+
+**SECTION 2**
+
+SELECT Name, Area FROM lake ORDER BY Area DESC;
+
+SELECT Name, Area FROM lake WHERE Altitude < 0 ORDER BY Depth ASC;
+
+SELECT Name FROM country WHERE Population > 50000000 ORDER BY Population DESC;
+
+SELECT Name, Capital FROM country WHERE Population < 100000 ORDER BY Population ASC;
+
+**SECTION 3**
+
+SELECT COUNT(*) AS NombreLacsAltitudeNegative FROM lake WHERE Altitude < 0;
+
+SELECT COUNT(*) AS NombrePaysInflationSup3 FROM economy WHERE Inflation > 3;
+
+SELECT MAX(Population) AS PopulationVillePlusPeuplee FROM city;
+
+SELECT Name FROM lake ORDER BY Depth DESC LIMIT 1;
+
+SELECT AVG(Area) AS SurfaceMoyenneIle FROM island;
+
+SELECT AVG(Area) AS SurfaceMoyenneIlesSommetSup1000 FROM island WHERE Height > 1000;
+
+**SECTION 4**
+
+SELECT Country FROM population WHERE Population_Growth < 0
+INTERSECT
+SELECT Country FROM economy WHERE Inflation > 5;
+
+SELECT Name FROM city   WHERE Population > 1000000
+UNION
+SELECT Capital AS Name FROM country;
+
+SELECT Capital FROM country WHERE Population > 1000000;
+
+**SECTION 5**
+
+SELECT c.Name FROM country c
+JOIN population p ON c.Code = p.Country WHERE p.Population_Growth < 0;
+
+SELECT c.Name FROM country c
+JOIN economy e ON c.Code = e.Country WHERE e.Agriculture > e.Service AND e.Agriculture > e.Industry;
+
+SELECT c.Name AS CountryName, ci.Population AS CapitalPopulation FROM country c
+JOIN city ci ON c.Capital = ci.Name AND c.Code = ci.Country WHERE ci.Population > 10000000;
+
+**SECTION 6**
+
+SELECT e.Name AS EthnicGroup, SUM(e.Percentage) AS TotalPopulation FROM ethnicGroup e
+JOIN country c ON e.Country = c.Code WHERE c.Name = 'China'
+GROUP BY e.Name ORDER BY TotalPopulation DESC;
+
+SELECT c.Name AS CountryName, COUNT(m.Name) AS Nombre_sommets FROM mountain m
+JOIN country c ON m.Country = c.Code WHERE m.Height > 5000
+GROUP BY c.Name ORDER BY Nombre_sommets DESC

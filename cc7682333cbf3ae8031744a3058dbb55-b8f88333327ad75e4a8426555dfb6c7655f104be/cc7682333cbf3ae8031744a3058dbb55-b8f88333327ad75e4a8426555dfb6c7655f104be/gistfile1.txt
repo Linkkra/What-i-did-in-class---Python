@@ -1,0 +1,27 @@
+SELECT * FROM shopping_trends;
+
+SELECT age, gender, location
+FROM shopping_trends;
+
+/* Recupérer les infos (ID client, age, genre, couleur, saison)
+sur les clients qui habitent dans le Kentucky et dont la taille est M ou S */
+
+SELECT location, size, customer_id, age, gender, color, season
+from shopping_trends
+WHERE location = "Kentucky" and (size = "M" or size = "S")
+and season = "Summer"
+order by age DESC
+limit 5; 
+
+/* Exercice
+Extraire à partir de la base de données, les modes de paiement,
+l'ID client, nb d'achats, moy de paiement préféré 
+Ordrer les données & afficher le top 10 */
+
+SELECT payment_method, preferred_payment_method, previous_purchases, customer_id 
+from shopping_trends
+order by previous_purchases DESC
+limit 100;
+
+
+

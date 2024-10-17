@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[19]:
+
+
+import math
+
+
+# In[ ]:
+
+
+#EXERCICE 1#
+
+
+# In[25]:
+
+
+def tri_insertion(liste):
+    for i in range(1, len(liste)):
+        cle = liste[i]
+        j = i - 1
+        while j >= 0 and liste[j] > cle:
+            liste[j + 1] = liste[j]
+            j -= 1
+        liste[j + 1] = cle
+    return liste
+
+liste_a_trier = [29, 10, 14, 37, 120, 56, 5, 87]
+print("Liste avant tri :", liste_a_trier)
+
+liste_triée = tri_insertion(liste_a_trier)
+print("Liste après tri :", liste_triée)
+
+
+# In[27]:
+
+
+def recherche_binaire(tab, x):
+    b_inf = 0
+    b_sup = len(tab) - 1
+    trouve = False
+
+    while not trouve and b_inf <= b_sup:
+        m = (b_inf + b_sup) // 2
+        
+        if tab[m] == x:
+            trouve = True
+            return m 
+        
+        elif x < tab[m]:
+            b_sup = m - 1
+        
+        else:
+            b_inf = m + 1
+
+    return -1 
+
+element_a_chercher = 5
+indice = recherche_binaire(liste_triée, element_a_chercher)
+
+if indice != -1:
+    print(f"L'élément {element_a_chercher} a été trouvé à l'indice {indice}.")
+else:
+    print(f"L'élément {element_a_chercher} n'existe pas dans la liste.")
+
+
+# In[44]:
+
+
+def chercher_element_dans_liste(liste, cible):
+    liste_triée = tri_insertion(liste)
+    print(f"Liste triée : {liste_triée}")
+    
+    index = recherche_binaire(liste_triée, cible)
+    
+    if index != -1:
+        print(f"L'élément {cible} a été trouvé à l'indice {index}.")
+    else:
+        print(f"L'élément {cible} n'existe pas dans la liste.")
+    
+    return index
+
+if __name__ == "__main__":
+    liste_a_trier = [29, 10, 14, 37, 120, 56, 5, 87]
+    print("Liste avant tri :", liste_a_trier)
+    
+    element_a_chercher = 5
+    chercher_element_dans_liste(liste_a_trier, element_a_chercher)
+
+
+# In[ ]:

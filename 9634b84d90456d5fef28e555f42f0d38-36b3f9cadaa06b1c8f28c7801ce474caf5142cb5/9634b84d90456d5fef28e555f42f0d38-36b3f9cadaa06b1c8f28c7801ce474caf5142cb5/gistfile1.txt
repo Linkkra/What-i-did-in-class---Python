@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+#EXERCICE 4# 
+
+
+# In[3]:
+
+
+def tri_rapide(liste):
+    if len(liste) <= 1:
+        return liste
+    else:
+        pivot = liste[0]
+        gauche = [x for x in liste[1:] if x <= pivot]
+        droite = [x for x in liste[1:] if x > pivot]
+        return tri_rapide(gauche) + [pivot] + tri_rapide(droite)
+
+
+# In[7]:
+
+
+def recherche_lineaire(tab, x):
+    i = 0
+    trouve = False
+    n = len(tab)
+    
+    while i < n and tab[i] <= x:
+        if tab[i] == x:
+            trouve = True
+            break
+        i += 1
+    
+    return trouve, i if trouve else -1
+
+
+# In[5]:
+
+
+def chercher_apres_tri_rapide(liste, cible):
+    liste_triee = tri_rapide(liste)
+    print(f"Liste triée : {liste_triee}")
+    
+    trouve, index = recherche_lineaire(liste_triee, cible)
+    
+    if trouve:
+        print(f"L'élément {cible} a été trouvé à l'indice {index}.")
+    else:
+        print(f"L'élément {cible} n'existe pas dans la liste.")
+    
+    return index
+
+if __name__ == "__main__":
+    liste_a_trier = [93, 24, 38, 1, 96, 87, 100]
+    element_a_chercher = 38
+
+
+# In[8]:
+
+
+chercher_apres_tri_rapide(liste_a_trier, element_a_chercher)
+
+
+# In[ ]:
+
+
+
+
