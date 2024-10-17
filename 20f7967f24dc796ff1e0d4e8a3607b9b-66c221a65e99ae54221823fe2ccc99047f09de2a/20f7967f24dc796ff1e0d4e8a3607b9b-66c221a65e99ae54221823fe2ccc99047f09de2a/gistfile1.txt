@@ -1,0 +1,67 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import math
+
+
+# In[2]:
+
+
+#EXERCICE 2#
+
+
+# In[7]:
+
+
+def tri_bulles_croissant(liste):
+    n = len(liste)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if liste[j] > liste[j+1]:
+                liste[j], liste[j+1] = liste[j+1], liste[j]
+    return liste
+
+
+# In[8]:
+
+
+def tri_bulles_decroissant(liste):
+    n = len(liste)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if liste[j] < liste[j+1]:
+                liste[j], liste[j+1] = liste[j+1], liste[j]
+    return liste
+
+
+# In[10]:
+
+
+def trier_pairs_impairs(liste):
+    pairs = [x for x in liste if x % 2 == 0]
+    impairs = [x for x in liste if x % 2 != 0]
+    
+    pairs_triees = tri_bulles_croissant(pairs)
+    impairs_tries = tri_bulles_decroissant(impairs)
+    
+    resultat = pairs_triees + impairs_tries
+    return resultat
+
+liste_a_trier = [93, 24, 38, 1, 96, 87, 100]
+resultat = trier_pairs_impairs(liste_a_trier)
+
+
+# In[11]:
+
+
+print("Liste après tri :", resultat)
+
+
+# In[ ]:
+
+
+
+

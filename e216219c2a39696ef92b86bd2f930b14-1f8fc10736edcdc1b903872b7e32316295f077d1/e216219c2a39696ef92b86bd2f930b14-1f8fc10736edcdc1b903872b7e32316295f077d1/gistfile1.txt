@@ -1,0 +1,120 @@
+N = int(input())
+
+D=[0]*N
+
+for i in range (N):
+ D[i]=float(input())
+print(D)
+max = D[0]
+
+
+
+B=[0]*N
+
+for j in range (N):
+ B[j]=float(input())
+print(B)
+
+
+def tri_insertion(k):
+ for i in range(len(k)):
+
+  clé = k[i]
+  j = i - 1
+  while j >= 0 and clé < k[j]:
+   k[j + 1] = k[j]
+   j = j - 1
+
+  k[j + 1] = clé
+
+ return k
+
+def fusionner_list (D,B):
+ k=D+B
+ return k
+print(fusionner_list(D,B))
+k=fusionner_list(D,B)
+
+
+def tri_insertion(k):
+ for i in range(len(k)):
+
+  clé = k[i]
+  j = i - 1
+  while j >= 0 and clé < k[j]:
+   k[j + 1] = k[j]
+   j = j - 1
+
+  k[j + 1] = clé
+
+ return k
+def recherche_binaire(k, x):
+ b_inf = 0
+ b_sup = len(k) - 1
+ trouve = False
+
+ while not trouve and b_inf <= b_sup:
+  m = (b_inf + b_sup) // 2
+
+  if k[m] == x:
+   trouve = True
+   return m
+
+  elif x < k[m]:
+   b_sup = m - 1
+
+  else:
+   b_inf = m + 1
+
+ return -1
+
+print(tri_insertion(k))
+print(k)
+
+def recherche_binaire(k, x):
+ b_inf = 0
+ b_sup = len(k) - 1
+ trouve = False
+
+ while not trouve and b_inf <= b_sup:
+  m = (b_inf + b_sup) // 2
+
+  if k[m] == x:
+   trouve = True
+   return m
+
+  elif x < k[m]:
+   b_sup = m - 1
+
+  else:
+   b_inf = m + 1
+
+ return -1
+
+tri_insertion(D)
+tri_insertion(B)
+tri_insertion(k)
+element_a_chercher = float(input())
+indice = recherche_binaire(D, element_a_chercher)
+
+if indice != -1:
+ print(f"L'élément {element_a_chercher} a été trouvé à l'indice {indice}.")
+else:
+ print(f"L'élément {element_a_chercher} n'existe pas dans la liste.")
+
+
+element_a_chercher = float(input())
+indice = recherche_binaire(B, element_a_chercher)
+
+if indice != -1:
+ print(f"L'élément {element_a_chercher} a été trouvé à l'indice {indice}.")
+else:
+ print(f"L'élément {element_a_chercher} n'existe pas dans la liste.")
+
+ element_a_chercher = float(input())
+ indice = recherche_binaire(k, element_a_chercher)
+
+ if indice != -1:
+  print(f"L'élément {element_a_chercher} a été trouvé à l'indice {indice}.")
+ else:
+  print(f"L'élément {element_a_chercher} n'existe pas dans la liste.")
