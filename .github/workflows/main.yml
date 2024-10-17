@@ -1,5 +1,18 @@
 cd C:\Users\beatr\Desktop\My Gists
 mkdir my-gists
+cd my-gists
+
+git clone https://gist.github.com/Linkkra/0aaffd5babf4f7d3fc0781f16491fb50
+git clone https://gist.github.com/Linkkra/600ef0cdaab56999805605a576bb51d3
+git clone https://gist.github.com/Linkkra/eb3291820ca997e46b96c799a66f6aac
+git clone https://gist.github.com/Linkkra/b196d38abf07d2e79ec38e56da5fb0be
+git clone https://gist.github.com/Linkkra/cc7682333cbf3ae8031744a3058dbb55
+git clone https://gist.github.com/Linkkra/9634b84d90456d5fef28e555f42f0d38
+git clone https://gist.github.com/Linkkra/e216219c2a39696ef92b86bd2f930b14
+git clone https://gist.github.com/Linkkra/4f4cd3306b6afcaac64b073feb1a36f5
+git clone https://gist.github.com/Linkkra/95e5d3ca288d2f57ab331a1562b2a3dc
+
+dir
 
 git add .
 git commit -m "Adding gits to the project"
