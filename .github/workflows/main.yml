@@ -3,3 +3,4 @@ mkdir my-gists
 
 git add .
 git commit -m "Adding gits to the project"
+git push
