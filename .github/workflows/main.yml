@@ -1,0 +1,5 @@
+cd C:\Users\Bea\Desktop\Projects
+mkdir my-gists
+
+git add .
+git commit -m "Adding gits to the project"
